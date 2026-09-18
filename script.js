@@ -104,14 +104,16 @@ const WHATSAPP_IMAGES = [
 ];
 
 // Place les vignettes WhatsApp dans les marges réelles autour du contenu
-// (mesurées en direct), pour qu'elles restent toujours visibles au premier
-// plan sans jamais toucher le texte ni se toucher entre elles.
+// (mesurées en direct) quand il y a assez de place pour ne toucher ni le
+// texte ni les autres vignettes. Sinon (mobile, pas de marge latérale),
+// elles s'affichent dans une bande défilante au-dessus de la galerie.
 function addRandomPhotoTags() {
   const layer = document.getElementById("photo-floating-layer");
+  const strip = document.getElementById("whatsapp-strip");
   const poemCard = document.querySelector(".poem-card");
   const header = document.querySelector(".main-header");
   const footer = document.querySelector(".main-footer");
-  if (!layer || !poemCard || !header || !footer) return;
+  if (!layer || !strip || !poemCard || !header || !footer) return;
 
   const layerRect = layer.getBoundingClientRect();
   if (layerRect.width === 0 || layerRect.height === 0) return;
@@ -134,8 +136,12 @@ function addRandomPhotoTags() {
 
   if (gutter < MIN_GUTTER || usableHeight < 200) {
     layer.style.display = "none";
+    fillWhatsappStrip(strip);
     return;
   }
+
+  strip.classList.remove("is-active");
+  strip.innerHTML = "";
   layer.style.display = "block";
 
   const tagWidth = Math.max(32, Math.min(96, gutter - 14));
@@ -164,6 +170,22 @@ function addRandomPhotoTags() {
     tag.appendChild(mini);
     layer.appendChild(tag);
   }
+}
+
+function fillWhatsappStrip(strip) {
+  if (strip.childElementCount === WHATSAPP_IMAGES.length) {
+    strip.classList.add("is-active");
+    return;
+  }
+  strip.innerHTML = "";
+  WHATSAPP_IMAGES.forEach((src) => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = "Nous deux 💕";
+    img.loading = "lazy";
+    strip.appendChild(img);
+  });
+  strip.classList.add("is-active");
 }
 
 window.addEventListener("resize", () => {

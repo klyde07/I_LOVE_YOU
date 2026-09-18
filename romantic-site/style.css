@@ -1,0 +1,303 @@
+/* ═══════════════ BASE ═══════════════ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --rose: #ff8fab;
+  --rose-dark: #e75480;
+  --rose-light: #ffd1dc;
+  --cream: #fff5f7;
+  --blush: #ffe4eb;
+  --text: #6d2c45;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(135deg, #fff5f7 0%, #ffdbe6 50%, #ffc9d9 100%);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.hidden { display: none; }
+
+/* ═══════════════ ÉCRAN DE BIENVENUE ═══════════════ */
+.welcome {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.welcome-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--rose-light);
+  border-radius: 28px;
+  box-shadow: 0 20px 60px rgba(231, 84, 128, 0.25);
+  max-width: 560px;
+  width: 100%;
+  padding: 3rem 2rem;
+  text-align: center;
+  animation: popIn 0.8s ease both;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.85) translateY(30px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.welcome-eyebrow {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--rose-dark);
+  letter-spacing: 2px;
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+}
+
+.welcome-title {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  color: var(--rose-dark);
+  margin-bottom: 1.2rem;
+  line-height: 1.15;
+}
+
+.welcome-title em {
+  font-style: normal;
+  color: var(--rose);
+  text-decoration: underline wavy var(--rose-light) 3px;
+  text-underline-offset: 8px;
+}
+
+.warning {
+  background: var(--blush);
+  border-radius: 14px;
+  padding: 1rem 1.2rem;
+  font-size: 0.95rem;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.choice-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn-yes {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%);
+  border: none;
+  border-radius: 50px;
+  padding: 0.9rem 3rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(231, 84, 128, 0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  min-width: 260px;
+}
+
+.btn-yes:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 14px 32px rgba(231, 84, 128, 0.55);
+}
+
+.btn-yes:active { transform: scale(0.97); }
+
+.btn-alt {
+  background: linear-gradient(135deg, #ffb3c6 0%, var(--rose) 100%);
+}
+
+.hint {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  opacity: 0.75;
+}
+
+/* ═══════════════ PAGE PRINCIPALE ═══════════════ */
+.main {
+  min-height: 100vh;
+  padding: 3rem 1rem 4rem;
+  position: relative;
+}
+
+.main-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.script-title {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: clamp(2.8rem, 7vw, 4.5rem);
+  color: var(--rose-dark);
+  text-shadow: 2px 2px 0 var(--rose-light);
+}
+
+.subtitle {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: var(--rose-dark);
+  margin-top: 0.6rem;
+}
+
+/* --- Galerie --- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(140px, 220px));
+  grid-template-areas:
+    "p1 p2"
+    "poem poem"
+    "p3 p4";
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: start;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.photo-1 { grid-area: p1; }
+.photo-2 { grid-area: p2; }
+.poem-card { grid-area: poem; }
+.photo-3 { grid-area: p3; }
+.photo-4 { grid-area: p4; }
+
+/* --- Photos style polaroïd --- */
+.photo {
+  background: #fff;
+  padding: 0.7rem 0.7rem 0.4rem;
+  border-radius: 6px;
+  box-shadow: 0 12px 30px rgba(231, 84, 128, 0.25);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  justify-self: center;
+  width: 100%;
+  animation: floatY 5s ease-in-out infinite;
+}
+
+.photo:nth-of-type(odd)  { animation-delay: 0s; }
+.photo:nth-of-type(even) { animation-delay: 2.5s; }
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.photo img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 3px;
+  display: block;
+}
+
+.photo figcaption {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.05rem;
+  color: var(--rose-dark);
+  text-align: center;
+  padding: 0.55rem 0 0.35rem;
+}
+
+.photo:hover {
+  transform: rotate(0deg) scale(1.06) !important;
+  box-shadow: 0 18px 44px rgba(231, 84, 128, 0.4);
+  z-index: 5;
+  position: relative;
+}
+
+.tilt-left  { transform: rotate(-4deg); }
+.tilt-right { transform: rotate(4deg); }
+
+/* --- Carte poème --- */
+.poem-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px double var(--rose);
+  border-radius: 22px;
+  box-shadow: 0 20px 50px rgba(231, 84, 128, 0.3);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+  justify-self: center;
+  width: 100%;
+  max-width: 520px;
+}
+
+.poem-card::before {
+  content: "❝";
+  position: absolute;
+  top: -22px;
+  left: 24px;
+  font-size: 3.5rem;
+  color: var(--rose);
+  opacity: 0.5;
+}
+
+.poem-card h3 {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: 2.6rem;
+  color: var(--rose-dark);
+  margin-bottom: 1.2rem;
+}
+
+.poem-text {
+  font-size: 1.15rem;
+  line-height: 2;
+  font-style: italic;
+}
+
+.signature {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  color: var(--rose-dark);
+  margin-top: 1.5rem;
+}
+
+/* --- Cœurs flottants --- */
+#hearts-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -40px;
+  font-size: 1.4rem;
+  opacity: 0;
+  animation: rise linear forwards;
+}
+
+@keyframes rise {
+  0%   { opacity: 0; transform: translateY(0) rotate(0deg); }
+  15%  { opacity: 0.8; }
+  100% { opacity: 0; transform: translateY(-110vh) rotate(360deg); }
+}
+
+.main-footer {
+  text-align: center;
+  margin-top: 3.5rem;
+}
+
+.footer-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.3rem;
+  color: var(--rose-dark);
+}
+
+/* ═══════════════ RESPONSIVE ═══════════════ */
+@media (max-width: 520px) {
+  .gallery { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .poem-card { padding: 1.8rem 1.2rem; }
+  .poem-text { font-size: 1rem; }
+  .btn-yes { min-width: 220px; font-size: 1.3rem; }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pour Toi 💕</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════════ ÉCRAN DE BIENVENUE ══════════════ -->
+  <section id="welcome" class="welcome">
+    <div class="welcome-card">
+      <p class="welcome-eyebrow">⚠️ Alerte romantique détectée ⚠️</p>
+      <h1 class="welcome-title">Voulez-vous <em>vraiment</em> voir ce site ?</h1>
+      <p class="warning">⚠️ Attention : le contenu peut provoquer des papillons dans le ventre, des sourires béats et une envie de vous faire des câlins.</p>
+      <div class="choice-buttons">
+        <button id="btnYes1" class="btn-yes">Oui 💗</button>
+        <button id="btnYes2" class="btn-yes btn-alt">Oui (mais en mieux) 💖</button>
+      </div>
+      <p class="hint">(Non ? Dommage, il n'y a pas d'autre option… 🥰)</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ PAGE PRINCIPALE ══════════════ -->
+  <section id="main" class="main hidden">
+    <div id="hearts-container"></div>
+
+    <header class="main-header">
+      <h2 class="script-title">Pour toi, mon amour</h2>
+      <p class="subtitle">Chaque mot ici est un battement de mon cœur 💓</p>
+    </header>
+
+    <div class="gallery">
+      <!-- PHOTO 1 -->
+      <figure class="photo photo-1 tilt-left">
+        <img src="images/photo1.jpg" alt="Nous deux 💕" />
+        <figcaption>Notre premier souvenir 💕</figcaption>
+      </figure>
+
+      <!-- PHOTO 2 -->
+      <figure class="photo photo-2 tilt-right">
+        <img src="images/photo2.jpg" alt="Nous 💞" />
+        <figcaption>Ce sourire que j'adore 💞</figcaption>
+      </figure>
+
+      <!-- POÈME -->
+      <article class="poem-card">
+        <h3>À toi</h3>
+        <p class="poem-text">
+          Dans tes yeux j'ai trouvé mon refuge,<br />
+          Dans ton rire, ma plus belle musique.<br />
+          Chaque seconde à tes côtés<br />
+          Est un poème que la vie écrit.<br /><br />
+          Tu es le rose de mes journées,<br />
+          Le doux parfum de mes pensées.<br />
+          Aujourd'hui, demain, toujours,<br />
+          Mon cœur bat pour toi, mon amour.
+        </p>
+        <p class="signature">— À jamais, moi 💌</p>
+      </article>
+
+      <!-- PHOTO 3 -->
+      <figure class="photo photo-3 tilt-left">
+        <img src="images/photo3.jpg" alt="Nous deux 💗" />
+        <figcaption>Mon rayon de soleil 💗</figcaption>
+      </figure>
+
+      <!-- PHOTO 4 -->
+      <figure class="photo photo-4 tilt-right">
+        <img src="images/photo4.jpg" alt="Toi & moi 💓" />
+        <figcaption>À nos mille aventures 💓</figcaption>
+      </figure>
+    </div>
+
+    <footer class="main-footer">
+      <p class="footer-text">Fait avec tout mon amour, pour toi 💕</p>
+    </footer>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
